@@ -1,0 +1,12 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      oidsApiKey:
+        type: string
+        description: "Your Oids API key (shown once at signup on tryoids.com). Optional: reads work without one."
+  commandFunction: |-
+    (config) => ({ command: 'python3', args: ['server.py'], env: config.oidsApiKey ? { OIDS_API_KEY: config.oidsApiKey } : {} })
+  exampleConfig:
+    oidsApiKey: ""
